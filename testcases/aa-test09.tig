@@ -1,0 +1,5 @@
+let
+  function noargs() = ()
+in
+  noargs(a)
+end

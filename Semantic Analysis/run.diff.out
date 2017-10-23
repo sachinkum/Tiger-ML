@@ -1,0 +1,42 @@
+--- run.expected.out	2017-10-21 15:14:57.053842230 +0530
++++ run.actual.out	2017-10-22 01:27:26.946234773 +0530
+@@ -1438,19 +1438,17 @@
+ 
+ -- ../testcases/test14.tig --
+ /* error : compare rec with array */
+ 
+ let
++  type arrtype = array of int
++  type rectype = {name:string, id: int}
+ 
+-	type arrtype = array of int
+-	type rectype = {name:string, id: int}
+-
+-	var rec := rectype {name="aname", id=0}
+-	var arr := arrtype [3] of 0
+-
++  var rec := rectype {name="aname", id=0}
++  var arr := arrtype [3] of 0
+ in
+-	if rec <> arr then 3 else 4
++  if rec <> arr then 3 else 4
+ end
+ --
+ ../testcases/test14.tig:
+ parse =>
+ LetExp([
+@@ -1480,12 +1478,12 @@
+     VarExp(
+      SimpleVar(arr))),
+    IntExp(3),
+    IntExp(4))])
+ type check =>
+-../testcases/test14.tig:12.5:Types mismatch
+-../testcases/test14.tig:12.2:Type 'int' required
++../testcases/test14.tig:10.6:Types mismatch
++../testcases/test14.tig:10.3:Type 'int' required
+ 
+ -- ../testcases/test15.tig --
+ /* error : if-then returns non unit */
+ 
+ if 20 then 3
